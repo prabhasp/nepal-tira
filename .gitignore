@@ -16,8 +16,6 @@ pom.xml.asc
 .shadow-cljs/
 node_modules/
 .clj-kondo/*
-/public/js
-/public/main.css
 .idea
 *.iml
 .tool-versions

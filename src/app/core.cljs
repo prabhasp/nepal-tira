@@ -48,8 +48,9 @@
      ($ :.app-header "Aile Nepal tira...")
      ($ :.three-body
         ($ time-section)
-        ($ date-section)
-        ($ currency-section))))
+        ;($ date-section)
+        ;($ currency-section)
+        )))
 
 (defonce root
   (dom/create-root (js/document.getElementById "root")))
