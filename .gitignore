@@ -22,3 +22,5 @@ node_modules/
 
 docs/js/*
 docs/main.css
+
+.DS_Store
