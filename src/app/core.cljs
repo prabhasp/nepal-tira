@@ -22,7 +22,7 @@
      (fn []
        (js/setInterval #(set-date! (js/Date.)) 1000)))
     ($ :.app-section
-       ($ :.section-title "Time")
+       ($ :.section-title "Time in Nepal")
        ($ :.time-display (.toLocaleTimeString date "en-US" options))
        ($ :.hours-ahead (str "which is " (abs hrs) " hrs and " mins " minutes " (if (pos? diff) "ahead of" "behind") " you.")))))
 
