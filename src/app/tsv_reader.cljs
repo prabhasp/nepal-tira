@@ -65,7 +65,7 @@
   (let [[tsv-content set-tsv-content!] (uix/use-state "")]
     (uix/use-effect
      (fn []
-       (-> (js/fetch "voter-info.tsv")
+       (-> (js/fetch "./voter-info.tsv")
            (.then #(.text %))
            (.then #(set-tsv-content! %))))
      [])
