@@ -52,16 +52,17 @@
          #(.removeEventListener js/window "popstate" handle-route-change)))) ; event listener to check the pathname
 
     ($ :.app
-       (when (= current-route "/") ($ :.app-header "Aile Nepal tira..."))
-       (case current-route
-         "/" ($ :.three-body
-                ($ time-section)
-                ;; ($ tsvreader)
-                   ;($ date-section)
-                   ;($ currency-section)
-                )
-         "/vote"   ($ tsvreader)
-         ($ :.not-found "Page not found")))))
+      ;;  (when (= current-route "/") ($ :.app-header "Aile Nepal tira..."))
+      ;;  (case current-route
+      ;;    "/" ($ :.three-body
+      ;;           ($ time-section)
+      ;;           ;; ($ tsvreader)
+      ;;              ;($ date-section)
+      ;;              ;($ currency-section)
+      ;;           )
+      ;;    "/vote"   ($ tsvreader)
+      ;;    ($ :.not-found "Page not found"))
+       ($ tsvreader))))
 
 (defonce root
   (dom/create-root (js/document.getElementById "root")))
