@@ -50,7 +50,8 @@
   
   .three-body {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
     width: 100%;
     gap: 5px;
   }
@@ -130,3 +131,111 @@
     margin-bottom: 10px;
   }
   
+
+/* Table Styles Start */
+.sticky-container {
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.table-scroll-container {
+  overflow: auto;
+  height: calc(100vh - 60px);
+}
+
+.tsv-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tsv-table thead {
+  position: sticky;
+  top: 0; 
+  background-color: #62cff4;
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.tsv-table th {
+  background-color: #62cff4;
+  padding: 15px;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+.tsv-table th.first-column {
+  width: 100px;
+  min-width: 100px;
+}
+
+.tsv-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.tsv-table td:last-child {
+  border-right: none;
+}
+
+.tsv-table .first-column {
+  font-weight: bold;
+}
+
+.tsv-table .even-row {
+  background-color: #f9f9f9;
+}
+
+.tsv-table .odd-row {
+  background-color: #ffffff;
+}
+
+.tsv-table tr {
+  transition: background-color 0.3s;
+}
+
+.tsv-table a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.tsv-table a:hover {
+  color: #004080;
+}
+
+.tsv-table ul {
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.tsv-table li {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .tsv-table th,
+  .tsv-table td {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+
+
+/* Table Styles End */  
