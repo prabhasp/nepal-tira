@@ -4,6 +4,5 @@
           {:target :browser
            :output-dir "docs/js"
            :modules {:main {:entries [app.core]
-                            :init-fn app.core/init
-                            :react true}}
+                            :init-fn app.core/init}}
            :devtools {:preloads [preload devtools.preload]}}}}
