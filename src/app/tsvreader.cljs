@@ -1,17 +1,17 @@
-(ns app.tsv-reader
+(ns app.tsvreader
   (:require
    [uix.core :as uix :refer [defui $]]
    [clojure.string :as str]))
 
-(defn parse-tsv [tsv-content]
+(defn parsetsv [tsv-content]
   (let [lines (str/split-lines tsv-content)
         headers (rest (str/split (first lines) #"\t"))  ; Skip the first empty header
         rows (map #(str/split % #"\t") (rest lines))]
     {:headers headers
      :rows rows}))
 
-(defui tsv-table [{:keys [tsv-content]}]
-  (let [{:keys [headers rows]} (parse-tsv tsv-content)]
+(defui tsvtable [{:keys [tsv-content]}]
+  (let [{:keys [headers rows]} (parsetsv tsv-content)]
     ($ :div {:style {:margin "20px 0"
                      :fontFamily "Arial, sans-serif"}}
        ($ :table.tsv-table
@@ -61,14 +61,20 @@
                                           :borderBottom "1px solid #e0e0e0"}}
                              cell))))))))))))
 
-(defui tsv-reader []
-  (let [[tsv-content set-tsv-content!] (uix/use-state "")]
+(defui tsvreader []
+  (let [[tsv-content set-tsv-content!] (uix/use-state "")
+        [error set-error!] (uix/use-state nil)]
     (uix/use-effect
      (fn []
-       (-> (js/fetch "./voter-info.tsv")
-           (.then #(.text %))
-           (.then #(set-tsv-content! %))))
+       (-> (js/fetch "voterinfo.tsv")
+           (.then (fn [response]
+                    (if (.-ok response)
+                      (.text response)
+                      (throw (js/Error. (str "error! status: " (.-status response)))))))
+           (.then #(set-tsv-content! %))
+           (.catch #(set-error! (str "Failed to load TSV: " (.-message %))))))
      [])
-    (if (empty? tsv-content)
-      ($ :div "Loading TSV...")
-      ($ tsv-table {:tsv-content tsv-content}))))
+    (cond
+      error ($ :div "Error: " error)
+      (empty? tsv-content) ($ :div "Loading TSV...")
+      :else ($ tsvtable {:tsv-content tsv-content}))))

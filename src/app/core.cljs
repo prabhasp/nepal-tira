@@ -1,10 +1,8 @@
 (ns app.core
   (:require
-   [cljs.spec.alpha :as s]
-   [clojure.edn :as edn]
    [uix.core :as uix :refer [defui $]]
    [uix.dom :as dom]
-   [app.tsv-reader :refer [tsv-reader]]))
+   [app.tsvreader :refer [tsvreader]]))
 
 (defui time-section []
   (let [[date set-date!] (uix.core/use-state (js/Date.))
@@ -49,10 +47,12 @@
      ($ :.app-header "Aile Nepal tira...")
      ($ :.three-body
         ($ time-section)
-        ($ tsv-reader)
+
         ;($ date-section)
         ;($ currency-section)
-        )))
+        )
+     ($ :.table-section
+        ($ tsvreader))))
 (defonce root
   (dom/create-root (js/document.getElementById "root")))
 
