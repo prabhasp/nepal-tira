@@ -45,25 +45,14 @@
      ($ :.currency-value "0.00")))
 
 (defui app []
-  (let [[current-route set-current-route!] (uix/use-state "/")]
-    (uix/use-effect
-     (fn []
-       (let [handle-route-change #(set-current-route! (.. js/window -location -pathname))]
-         (.addEventListener js/window "popstate" handle-route-change)
-         (handle-route-change)
-         #(.removeEventListener js/window "popstate" handle-route-change)))) ; event listener to check the pathname
-
-    ($ :.app
-       (when (= current-route "/") ($ :.app-header "Aile Nepal tira..."))
-       (case current-route
-         "/" ($ :.three-body
-                ($ time-section)
-                   ;($ date-section)
-                   ;($ currency-section)
-                )
-         "/vote"   ($ tsv-reader)
-         ($ :.not-found "Page not found")))))
-
+  ($ :.app
+     ($ :.app-header "Aile Nepal tira...")
+     ($ :.three-body
+        ($ time-section)
+        ($ tsv-reader)
+        ;($ date-section)
+        ;($ currency-section)
+        )))
 (defonce root
   (dom/create-root (js/document.getElementById "root")))
 
