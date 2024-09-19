@@ -76,6 +76,8 @@
     ($ :div.sticky-container
        ($ :h1.sticky-header
           "२०२४ अमेरिकी चुनावको लागि महत्त्वपूर्ण जानकारी")
+       ($ :h2.sticky-header-2 
+          "निर्वाचन मिति: नोभेम्बर ५, २०२४ / २०८१ कार्तिक २०")
        ($ search-input {:search-term search-term
                         :set-search-term! set-search-term!})
        ($ :div.table-scroll-container

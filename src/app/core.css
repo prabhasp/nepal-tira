@@ -149,6 +149,17 @@
   text-align: center;
 }
 
+.sticky-header-2 {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
 .table-scroll-container {
   overflow: auto;
   height: calc(100vh - 300px);
